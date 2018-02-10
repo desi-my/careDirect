@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CF2170B3019D6E3F09456D1 /* Pods_careDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9A40FD6E98B2F46B411A43 /* Pods_careDirect.framework */; };
 		AB597A08202BAE3C00E3FE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB597A07202BAE3C00E3FE2E /* AppDelegate.swift */; };
 		AB597A0A202BAE3C00E3FE2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB597A09202BAE3C00E3FE2E /* ViewController.swift */; };
 		AB597A0D202BAE3C00E3FE2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB597A0B202BAE3C00E3FE2E /* Main.storyboard */; };
 		AB597A0F202BAE3C00E3FE2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB597A0E202BAE3C00E3FE2E /* Assets.xcassets */; };
 		AB597A12202BAE3C00E3FE2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB597A10202BAE3C00E3FE2E /* LaunchScreen.storyboard */; };
+		AB597A1A202BC7A100E3FE2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB597A19202BC7A100E3FE2E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F3573DAC6418FE182944D36 /* Pods-careDirect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-careDirect.release.xcconfig"; path = "Pods/Target Support Files/Pods-careDirect/Pods-careDirect.release.xcconfig"; sourceTree = "<group>"; };
 		AB597A04202BAE3B00E3FE2E /* careDirect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = careDirect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB597A07202BAE3C00E3FE2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB597A09202BAE3C00E3FE2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		AB597A0E202BAE3C00E3FE2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB597A11202BAE3C00E3FE2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB597A13202BAE3C00E3FE2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB597A19202BC7A100E3FE2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABD5F36224C462EE06D6C18E /* Pods-careDirect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-careDirect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-careDirect/Pods-careDirect.debug.xcconfig"; sourceTree = "<group>"; };
+		CA9A40FD6E98B2F46B411A43 /* Pods_careDirect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_careDirect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF2170B3019D6E3F09456D1 /* Pods_careDirect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A86A3CA199453D22EC2C158 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5F36224C462EE06D6C18E /* Pods-careDirect.debug.xcconfig */,
+				7F3573DAC6418FE182944D36 /* Pods-careDirect.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4D47563CA68647CD9090356E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA9A40FD6E98B2F46B411A43 /* Pods_careDirect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB5979FB202BAE3B00E3FE2E = {
 			isa = PBXGroup;
 			children = (
 				AB597A06202BAE3B00E3FE2E /* careDirect */,
 				AB597A05202BAE3B00E3FE2E /* Products */,
+				0A86A3CA199453D22EC2C158 /* Pods */,
+				4D47563CA68647CD9090356E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +85,7 @@
 				AB597A0B202BAE3C00E3FE2E /* Main.storyboard */,
 				AB597A0E202BAE3C00E3FE2E /* Assets.xcassets */,
 				AB597A10202BAE3C00E3FE2E /* LaunchScreen.storyboard */,
+				AB597A19202BC7A100E3FE2E /* GoogleService-Info.plist */,
 				AB597A13202BAE3C00E3FE2E /* Info.plist */,
 			);
 			path = careDirect;
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB597A16202BAE3C00E3FE2E /* Build configuration list for PBXNativeTarget "careDirect" */;
 			buildPhases = (
+				BE389AFFBB3A4A8B5F7EAD43 /* [CP] Check Pods Manifest.lock */,
 				AB597A00202BAE3B00E3FE2E /* Sources */,
 				AB597A01202BAE3B00E3FE2E /* Frameworks */,
 				AB597A02202BAE3B00E3FE2E /* Resources */,
+				5E85FE4C872B484772EF143A /* [CP] Embed Pods Frameworks */,
+				0EA175AA01C794678DD57E32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB597A12202BAE3C00E3FE2E /* LaunchScreen.storyboard in Resources */,
+				AB597A1A202BC7A100E3FE2E /* GoogleService-Info.plist in Resources */,
 				AB597A0F202BAE3C00E3FE2E /* Assets.xcassets in Resources */,
 				AB597A0D202BAE3C00E3FE2E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EA175AA01C794678DD57E32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-careDirect/Pods-careDirect-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E85FE4C872B484772EF143A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-careDirect/Pods-careDirect-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-careDirect/Pods-careDirect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE389AFFBB3A4A8B5F7EAD43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-careDirect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AB597A00202BAE3B00E3FE2E /* Sources */ = {
@@ -272,12 +361,13 @@
 		};
 		AB597A17202BAE3C00E3FE2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABD5F36224C462EE06D6C18E /* Pods-careDirect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = careDirect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daisy.careDirect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daisy.careDirect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -286,12 +376,13 @@
 		};
 		AB597A18202BAE3C00E3FE2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F3573DAC6418FE182944D36 /* Pods-careDirect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = careDirect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = daisy.careDirect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daisy.careDirect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
