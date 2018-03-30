@@ -389,6 +389,9 @@
                                     <segment title="Map"/>
                                 </segments>
                                 <color key="tintColor" red="0.27103745940000001" green="0.70552390809999999" blue="0.78592330219999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="fnr-zv-eGS" eventType="valueChanged" id="W2N-gt-QPM"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="piW-dh-efQ">
                                 <rect key="frame" x="0.0" y="72" width="375" height="482"/>
@@ -414,6 +417,10 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Yc-aU-I95">
+                                <rect key="frame" x="0.0" y="72" width="375" height="482"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JnB-5l-L9Q"/>
@@ -424,6 +431,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addEventButton" destination="tVA-gb-8j2" id="866-fh-13d"/>
+                        <outlet property="mapView" destination="8Yc-aU-I95" id="LUv-xC-DBl"/>
                         <outlet property="segmentedControl" destination="8dp-hc-UEO" id="Svp-xX-bgI"/>
                         <outlet property="tableEventsContainer" destination="piW-dh-efQ" id="wnD-8R-giq"/>
                     </connections>
@@ -547,7 +556,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addEventTapped:" destination="FFK-7o-dUY" eventType="touchUpInside" id="nub-sn-m6z"/>
-                                    <segue destination="3Ms-71-Obn" kind="show" id="nbb-TH-DF2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPF-i3-iRQ">
@@ -588,37 +596,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTe-Dw-7aJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4207.1999999999998" y="-964.76761619190415"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="a3V-jl-CSm">
-            <objects>
-                <viewController id="3Ms-71-Obn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Z7-81-hfO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="you add events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDf-vW-TBf">
-                                <rect key="frame" x="194" y="292" width="117" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gva-H3-29N">
-                                <rect key="frame" x="71" y="79" width="206" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" red="0.27103745940000001" green="0.70552390809999999" blue="0.78592330219999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="2FJ-gE-apZ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gAt-FZ-FzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5232.8000000000002" y="-993.55322338830592"/>
         </scene>
         <!--Training-->
         <scene sceneID="dGb-Ic-IAB">

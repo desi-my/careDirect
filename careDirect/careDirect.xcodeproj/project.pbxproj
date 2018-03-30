@@ -27,6 +27,7 @@
 		AB6CD41620340A12002FF0C0 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41020340A12002FF0C0 /* FirebaseReference.swift */; };
 		AB6CD41720340A12002FF0C0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41120340A12002FF0C0 /* SignUpVC.swift */; };
 		AB6CD41820340A12002FF0C0 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41220340A12002FF0C0 /* AlertController.swift */; };
+		AB894189206B736100431B06 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB894188206B736100431B06 /* MapKit.framework */; };
 		AB9EBFDA2049415D00D499B2 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9EBFD82049415D00D499B2 /* ListTableViewCell.swift */; };
 		AB9EBFDB2049415D00D499B2 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9EBFD92049415D00D499B2 /* ListTableViewCell.xib */; };
 		ABE720012054C9AC00C23F58 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE720002054C9AC00C23F58 /* TrainingVC.swift */; };
@@ -56,6 +57,7 @@
 		AB6CD41020340A12002FF0C0 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseReference.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/FirebaseReference.swift; sourceTree = "<absolute>"; };
 		AB6CD41120340A12002FF0C0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/SignUpVC.swift; sourceTree = "<absolute>"; };
 		AB6CD41220340A12002FF0C0 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertController.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/AlertController.swift; sourceTree = "<absolute>"; };
+		AB894188206B736100431B06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AB9EBFD82049415D00D499B2 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		AB9EBFD92049415D00D499B2 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		ABD5F36224C462EE06D6C18E /* Pods-careDirect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-careDirect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-careDirect/Pods-careDirect.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB894189206B736100431B06 /* MapKit.framework in Frameworks */,
 				ABE720032054CA3D00C23F58 /* MessageUI.framework in Frameworks */,
 				4CF2170B3019D6E3F09456D1 /* Pods_careDirect.framework in Frameworks */,
 			);
@@ -89,6 +92,7 @@
 		4D47563CA68647CD9090356E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB894188206B736100431B06 /* MapKit.framework */,
 				ABE720022054CA3D00C23F58 /* MessageUI.framework */,
 				CA9A40FD6E98B2F46B411A43 /* Pods_careDirect.framework */,
 			);
@@ -187,6 +191,11 @@
 					AB597A03202BAE3B00E3FE2E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
