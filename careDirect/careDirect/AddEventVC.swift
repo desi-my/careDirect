@@ -28,14 +28,6 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBOutlet weak var dateEvent: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
-    //  @IBOutlet weak var titleEventTF: UITextField!
-  //  @IBOutlet weak var locationEventTF: UITextField!
-   // @IBOutlet weak var descriptionEventTF: UITextView!
-   // @IBOutlet weak var websiteTF: UITextField!
-  //  @IBOutlet weak var dateEvent: UITextField!
-  //  @IBOutlet weak var organizationEvent: UITextField!
- //   @IBOutlet weak var imageView: UIImageView!
-    
     let imagePicker = UIImagePickerController()
     
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
@@ -62,7 +54,16 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     let picker = UIDatePicker()
     
     @IBAction func addEventTapped(_ sender: UIButton) {
-        addEvent()
+        
+        if ((titleEventTF.text!.isEmpty) || (locationEventTF.text!.isEmpty) || (websiteTF.text!.isEmpty) || (organizationEvent.text!.isEmpty) || (descriptionEventTF.text!.isEmpty) || (dateEvent.text!.isEmpty)) {
+            self.view.endEditing(true)
+               displayMyAlertMessage(userMessage: "All fields are required");
+        }else {
+              displayMySuccessMessage(successMessage: "The Event has been added successfully!");
+             addEvent()
+            
+        }
+       
     }
     
     
@@ -113,54 +114,10 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         
         refEvents.child(key).setValue(event)
         
-       
         
-      /*  //Save images to the storage  -----   1
-
-        let imageName = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child("\(imageName).png")
-        
-        if let uploadData = UIImagePNGRepresentation(imageView.image!){
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                if error != nil {
-                    print(error as Any)
-                   return
-                }
-                print(metadata as Any)
-            })
-        }   */
-        
-        
-        //Save images to the storage  -- --- - -2
-  /*      func uploadProfilePic(){
-            var data = NSData()
-            data = UIImageJPEGRepresentation(imageView.image!, 0.8)! as NSData
-            // set upload path
-            let filePath = "\(event)" // path where you wanted to store img in storage
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-            
-            let storageRef = Storage.storage().reference()
-            storageRef.child(filePath).putData(data as Data, metadata: metaData){(metaData,error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }else{// store imageURL in DB.
-                    let dbfilePath = "\(event)/userpic" // update db userpic link.
-                    //store downloadURL
-                    let downloadURL = metaData!.downloadURL()!.absoluteString
-                    //store downloadURL at database
-                    self.refEvents.child(dbfilePath).updateChildValues(["userPic" : downloadURL])
-                }
-            }
-            
-        }    */
-     
-    
-        
-   //Save images to the storage  ----- it works
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
+   //Save images to the storage  ----- it works, but it is saved as application in the storage
+   /*     let metaData = StorageMetadata()
+        metaData.contentType = "image/png"
         
          let imageName = NSUUID().uuidString
          let storageRef = Storage.storage().reference().child("\(imageName).png")
@@ -176,11 +133,12 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             self.refEvents.child(key).child("URL").setValue(downloadURL)
             
          })
-         }
+         }     */
+        
         
         
         // Image Storage  worked perfect
-         /*  var data = NSData()
+           var data = NSData()
            data = UIImagePNGRepresentation(imageView.image!)! as NSData
 
             let metaData = StorageMetadata()
@@ -199,39 +157,48 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                     //store downloadURL at database
                       self.refEvents.child(key).child("URL").setValue(downloadURL)
                 }
-            
-            }  */
-      
-        
-        
-        
-        
-        
-        
-        
- 
-        
+            }
     }   // end addEvent
 
- /*   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image
-        picker.dismiss(animated: true, completion: nil)
-    }    */
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = image
         picker.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
         picker.dismiss(animated: true, completion: nil)
     }
 
     
+    //Display Success Message with confirmation
+    
+    func displayMySuccessMessage(successMessage:String){
+        let myAlert = UIAlertController(title:"Congradulations!", message: successMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
+        let okAction = UIAlertAction(title:"OK", style: UIAlertActionStyle.default){
+            action in self.dismiss(animated: true, completion:nil);
+        }
+        
+        myAlert.addAction(okAction);
+        self.present(myAlert, animated:true, completion:nil);
+    }
     
     
-} // end
+    //Display Alert Message if any of the fields are empty
+    
+    func displayMyAlertMessage(userMessage:String){
+        let myAlert = UIAlertController(title:"Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        
+        let okAction = UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler:nil);
+        
+        myAlert.addAction(okAction);
+        self.present(myAlert, animated:true, completion:nil);
+    }
+    
+    
+    
+    
+} //********** end

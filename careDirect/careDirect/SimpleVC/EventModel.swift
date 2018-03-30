@@ -7,17 +7,17 @@
 //
 
 class EventModel {
-    var title: String?
-    var location: String?
-    var date: String?
-    var url: String?
+var title: String?
+var location: String?
+var date: String?
+var url: String?
 
-   
-    
-    init(Title: String?, Location: String?, Date: String?, URL: String?) {
-        self.title = Title;
-        self.location = Location;
-        self.date = Date;
-        self.url = URL;
-    }
+
+
+init(Title: String?, Location: String?, Date: String?, URL: String?) {
+    self.title = Title;
+    self.location = Location;
+    self.date = Date;
+    self.url = URL;
+}
 }

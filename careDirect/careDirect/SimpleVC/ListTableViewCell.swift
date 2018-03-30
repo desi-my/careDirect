@@ -10,24 +10,24 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblLocation: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var lblImage: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+@IBOutlet weak var lblTitle: UILabel!
+@IBOutlet weak var lblLocation: UILabel!
+@IBOutlet weak var lblDate: UILabel!
+@IBOutlet weak var lblImage: UIImageView!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    func customInit(evTitlle: String, evLocation: String, evDate: String, evImage: UIImage){
-        self.lblTitle.text = evTitlle
-        self.lblLocation.text = evLocation
-        self.lblDate.text = evDate
-        self.lblImage.image = evImage
-    }
+override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+}
+
+override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+}
+
+func customInit(evTitlle: String, evLocation: String, evDate: String, evImage: UIImage){
+    self.lblTitle.text = evTitlle
+    self.lblLocation.text = evLocation
+    self.lblDate.text = evDate
+    self.lblImage.image = evImage
+}
 }
