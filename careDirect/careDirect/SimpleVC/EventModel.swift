@@ -7,17 +7,27 @@
 //
 
 class EventModel {
-var title: String?
-var location: String?
-var date: String?
-var url: String?
+    
+    var title: String?
+    var location: String?
+    var date: String?
+    var url: String?
+    var organization: String?
+    var description: String?
+    
 
 
+    init(Title: String?, Location: String?, Date: String?, Organization: String?, Description: String?, URL: String?) {
+    
+   //  init(Title: String?, Location: String?, Date: String?, URL: String?) {
+        
+        self.title = Title;
+        self.location = Location;
+        self.date = Date;
+        self.url = URL;
+        
+        self.organization = Organization;
+        self.description = Description;
+    }
 
-init(Title: String?, Location: String?, Date: String?, URL: String?) {
-    self.title = Title;
-    self.location = Location;
-    self.date = Date;
-    self.url = URL;
-}
 }
