@@ -21,7 +21,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     
     FirebaseApp.configure()
     
-  
     return true
 }
 

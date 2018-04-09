@@ -54,7 +54,10 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     let eventDate = eventObject?["Date"]
                      let eventUrl = eventObject?["URL"]
                     
-                    let event = EventModel(Title: eventTitle as! String?, Location: eventLocation as! String?, Date: eventDate as! String?, URL: eventUrl as! String?)
+                    let eventOrganization = eventObject?["Organization"]
+                      let evenDescription = eventObject?["Description"]
+                    
+                    let event = EventModel(Title: eventTitle as! String?, Location: eventLocation as! String?, Date: eventDate as! String?, Organization: eventOrganization as! String?, Description: evenDescription as! String?, URL: eventUrl as! String?)
                     self.eventsList.append(event)
                 }
                 self.tableEvents.reloadData()
