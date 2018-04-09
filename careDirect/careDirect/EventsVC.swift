@@ -134,7 +134,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         print("row: \(indexPath.row)")
         print("section: \(indexPath.section)")
         print("You selected: \(eventsList[indexPath.row])")
-
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
