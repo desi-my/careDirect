@@ -73,13 +73,14 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
     
     //how many sections are in your table
-   // func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-      //  return 1
-   // }
+   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+      return 1
+   }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  tableCount = eventsList.count
-        return eventsList.count
+       return eventsList.count
+        //return 1;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,6 +141,9 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         
         if (segue.identifier == "showDetails") {
             let nextScene = segue.destination as! EventViewController
+            let indexPath = tableEventsContainer.indexPathForSelectedRow!
+            selectedEvent  = eventsList[indexPath.row]
+            
             nextScene.detailsModel = selectedEvent
         }
     }

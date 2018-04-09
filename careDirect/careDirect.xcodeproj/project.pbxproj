@@ -31,8 +31,8 @@
 		AB6CD41520340A12002FF0C0 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD40F20340A12002FF0C0 /* SignInVC.swift */; };
 		AB6CD41620340A12002FF0C0 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41020340A12002FF0C0 /* FirebaseReference.swift */; };
 		AB6CD41720340A12002FF0C0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41120340A12002FF0C0 /* SignUpVC.swift */; };
-		AB6CD41820340A12002FF0C0 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CD41220340A12002FF0C0 /* AlertController.swift */; };
 		AB894189206B736100431B06 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB894188206B736100431B06 /* MapKit.framework */; };
+		ABD0DECD207C1370005C9432 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD0DECC207C136F005C9432 /* AlertController.swift */; };
 		ABE720012054C9AC00C23F58 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE720002054C9AC00C23F58 /* TrainingVC.swift */; };
 		ABE720032054CA3D00C23F58 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE720022054CA3D00C23F58 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
@@ -64,8 +64,8 @@
 		AB6CD40F20340A12002FF0C0 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInVC.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/SignInVC.swift; sourceTree = "<absolute>"; };
 		AB6CD41020340A12002FF0C0 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseReference.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/FirebaseReference.swift; sourceTree = "<absolute>"; };
 		AB6CD41120340A12002FF0C0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/SignUpVC.swift; sourceTree = "<absolute>"; };
-		AB6CD41220340A12002FF0C0 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertController.swift; path = /Users/daisy/Documents/UWBothell/careDirect/careDirect/careDirect/AlertController.swift; sourceTree = "<absolute>"; };
 		AB894188206B736100431B06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ABD0DECC207C136F005C9432 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		ABD5F36224C462EE06D6C18E /* Pods-careDirect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-careDirect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-careDirect/Pods-careDirect.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE720002054C9AC00C23F58 /* TrainingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		ABE720022054CA3D00C23F58 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -144,11 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				AB405DA020437F7900B389B3 /* SimpleVC */,
-				AB6CD41220340A12002FF0C0 /* AlertController.swift */,
 				AB2EF6622070A6B600A8BD7A /* DetailsViewController.swift */,
 				AB6CD41020340A12002FF0C0 /* FirebaseReference.swift */,
 				AB6CD40F20340A12002FF0C0 /* SignInVC.swift */,
 				AB6CD41120340A12002FF0C0 /* SignUpVC.swift */,
+				ABD0DECC207C136F005C9432 /* AlertController.swift */,
 				ABE720002054C9AC00C23F58 /* TrainingVC.swift */,
 				AB597A07202BAE3C00E3FE2E /* AppDelegate.swift */,
 				AB405DAA2044AD4800B389B3 /* AddEventVC.swift */,
@@ -317,11 +317,11 @@
 				AB405DA32043802A00B389B3 /* ListVC.swift in Sources */,
 				AB6CD41520340A12002FF0C0 /* SignInVC.swift in Sources */,
 				AB405DA72043807300B389B3 /* MapVC.swift in Sources */,
+				ABD0DECD207C1370005C9432 /* AlertController.swift in Sources */,
 				AB2EF6632070A6B600A8BD7A /* DetailsViewController.swift in Sources */,
 				AB405DAB2044AD4800B389B3 /* AddEventVC.swift in Sources */,
 				AB405DAF20477D1E00B389B3 /* EventModel.swift in Sources */,
 				AB2EF66620717BF800A8BD7A /* DetailsTableViewCell.swift in Sources */,
-				AB6CD41820340A12002FF0C0 /* AlertController.swift in Sources */,
 				AB6CD41720340A12002FF0C0 /* SignUpVC.swift in Sources */,
 				AB6CD41420340A12002FF0C0 /* EventViewController.swift in Sources */,
 				AB405D9F2042A5A300B389B3 /* EventsVC.swift in Sources */,
