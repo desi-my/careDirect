@@ -19,28 +19,44 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     @IBOutlet weak var tableEventsContainer: UITableView!
     @IBOutlet weak var addEventButton: UIButton!
     
+    @IBOutlet weak var pinView: PinView!
+    
+    
     var refEvents: DatabaseReference!
     var eventsList = [EventModel]()
     
     var selectedEvent: EventModel?
-    var tableCount = 0
+    
+    
     
     func setupMapView() {
         
-       //1.  Setting the Initial location
-       let initialLocation = CLLocation(latitude: 47.608013, longitude: -122.335167)
+        //1.  Setting the Initial location
+        let initialLocation = CLLocation(latitude: 47.608013, longitude: -122.335167)
         zomMapOn(location: initialLocation)
         
         self.mapView.removeAnnotations(self.mapView.annotations)
-        mapView.delegate = self
-       
+        self.mapView.delegate = self
+
+        
+  /*      UIView.animate(withDuration: 0.7, delay: 1.0, options: .curveEaseOut, animations: {
+            
+            let _:CGRect = self.pinView.frame
+            let newFrame:CGRect = CGRect(x: 0, y:390, width: self.pinView.frame.size.width, height: self.pinView.frame.size.height)
+            self.pinView.frame = newFrame
+            
+        }, completion: { finished in
+            // animation completed - do sometthing
+        })
+     */
         
     }
     
-  /*  override func viewDidAppear(_ animated: Bool) {
+    // 1 Check Location Service
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationServiceAuthenticationStatus()
-    } */
+    }
     
     // 2 -- Initial Location
    private let regionRadius: CLLocationDistance = 1000
@@ -64,14 +80,96 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         }
     }
     
-   /* extension EventsVC : CLLocationManagerDelegate {
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-            let location = locations.last!
-            self.mapView.showsUserLocation = true
+
+    // Custom Pin Icons
+    
+   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+     if !(annotation is MKPointAnnotation) {
+           return nil
         }
+        
+        let annotationIdentifier = "pin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+            let btn = UIButton(type: .detailDisclosure)
+            
+            annotationView?.rightCalloutAccessoryView = btn
+            btn.tintColor = UIColor.blue
+        }else {
+            annotationView!.annotation = annotation
+        }
+        
+        let orgButton = UIButton(type: UIButtonType.custom) as UIButton
+        orgButton.frame.size.width = 44
+        orgButton.frame.size.height = 44
+        orgButton.backgroundColor = UIColor.red
+        orgButton.setImage(UIImage(named: "Org"), for: .normal)
+        
+        annotationView?.leftCalloutAccessoryView = orgButton
+        
+       let pinImage = UIImage(named: "pin")
+        annotationView!.image = pinImage
+        return annotationView
+        
+    }
+    
+    
+
+ func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        // Hide the callout view.
+    //    mapView.deselectAnnotation(annotation, animated: false)
+        
+        // Show an alert containing the annotation's details
+    let ac = UIAlertController(title: "placeName", message: "This is exapme", preferredStyle: .alert)
+   ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
+    
+
+    }
+    
+    
+
+    
+ /*   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let capital = view.annotation as! EventModel
+        let placeName = capital.title
+        let placeInfo = capital.date
+        
+        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    } */
+    
+    
+   // custom image annotation - Ok
+
+ /*  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "Name"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if (annotationView == nil) {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+        annotationView!.image = UIImage(named: "Name")
+        
+        return annotationView
     }  */
+
+
     
+ /*   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let annotation = view.annotation as? MKPointAnnotation {
+            self.mapView.removeAnnotation(annotation)
+        }
+    }   */
     
+
     //how many sections are in your table
    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
       return 1
@@ -98,8 +196,6 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         
 //**** Reatrevie Image from Storage and displat it in the UI
         
-        // cell.imageView?.image = UIImage(named: "Pass")
-        
        if let url = event.url {
             
             let imageStorageRef = Storage.storage().reference(forURL: url)
@@ -125,16 +221,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedEvent  = eventsList[indexPath.row]
-        // performSegue(withIdentifier: "showDetails", sender: self)
-        /*    if ( tableCount == eventsList.count){
-            selectedEvent  = eventsList[indexPath.row]
-        } */
-    
-        print ("something silly")
         print("row: \(indexPath.row)")
-        print("section: \(indexPath.section)")
-        print("You selected: \(eventsList[indexPath.row])")
- 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,7 +230,6 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             let nextScene = segue.destination as! EventViewController
             let indexPath = tableEventsContainer.indexPathForSelectedRow!
             selectedEvent  = eventsList[indexPath.row]
-            
             nextScene.detailsModel = selectedEvent
         }
     }
@@ -152,17 +238,11 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
    //***************** Reference to Firabse Database ********************//
     
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
         self.updatesVisibleSegment()
         self.setupMapView()
-        
-        //   print(EventsVC.description)
-        //  print(EventsVC.debugDescription)
-        
-     //   let nib = UINib (nibName: "ListTableViewCell", bundle: nil)
-     //   tableEventsContainer.register(nib, forCellReuseIdentifier: "cell")
-    //Moree-- tableEventsContainer!.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+       mapView.delegate = self
         
         refEvents = Database.database().reference().child("events");
         refEvents.observe(DataEventType.value, with: {(snapshot) in
@@ -179,6 +259,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
                     let eventOrganization = eventObject?["Organization"]
                     let eventDescription = eventObject?["Description"]
                     
+            
                     //Map
                     
                     let address = eventLocation as! String
@@ -194,16 +275,41 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
                             let placemark:CLPlacemark = placemarks![0] as CLPlacemark
                             let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
                             
-                            let pointAnnotation:MKPointAnnotation = MKPointAnnotation()
-                            pointAnnotation.coordinate = coordinates
-                            pointAnnotation.title = eventTitle as? String
+                          let pointAnnotation:MKPointAnnotation = MKPointAnnotation()
+                           pointAnnotation.coordinate = coordinates
+                           pointAnnotation.title = eventTitle as? String
                             
-                            self.mapView.addAnnotation(pointAnnotation)
+                            
+
+                           self.mapView.addAnnotation(pointAnnotation)
                             self.mapView.centerCoordinate = coordinates
-                            self.mapView.selectAnnotation(pointAnnotation, animated: true)
+                           self.mapView.selectAnnotation(pointAnnotation, animated: true)
+                            
+                            
+                            
+                       //     let alert = UIAlertController(title: pointAnnotation.title!, message: "A lovely (if touristy) place.", preferredStyle: .alert)
+                      //      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        //    self.present(alert, animated: true, completion: nil)
+                            
+                            
+                           
+                            
+                            
+                    //         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+                         //    print("annotation pressed")
+                      //          if let annotation = view.annotation as? MKPointAnnotation {
+                       //             self.mapView.removeAnnotation(annotation)
+                          //      }
+                       //      } // end remove
+                            
                         }
                         
+                        
                     })   // End map
+                    
+                    self.pinView.lblTitle.text = eventTitle as? String
+                    self.pinView.lblDate.text = eventDate as? String
+                    self.pinView.lblOrganization.text = eventOrganization as? String
                     
                   
 
@@ -215,11 +321,43 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             }
         })
         
-        //    for (EventModel event in self.eventsList) {
-        //         event.printDescription
-        //    }
-        
     }    //end viewDidLoad
+    
+    
+    
+/*    func mapView(_ mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
+        return false
+    }
+    
+    func mapView(_ mapView: MKMapView, leftCalloutAccessoryViewFor annotation: MKAnnotation) -> UIView? {
+        if (annotation.title! == "Kinkaku-ji") {
+            // Callout height is fixed; width expands to fit its content.
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
+            label.textAlignment = .right
+            label.textColor = UIColor(red: 0.81, green: 0.71, blue: 0.23, alpha: 1)
+            label.text = "金閣寺"
+            
+            return label
+        }
+        
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, rightCalloutAccessoryViewFor annotation: MKAnnotation) -> UIView? {
+        return UIButton(type: .detailDisclosure)
+    }
+    
+    func mapView(_ mapView: MKMapView, annotation: MKAnnotation, calloutAccessoryControlTapped control: UIControl) {
+        // Hide the callout view.
+        //     mapView.deselectAnnotation(annotation, animated: false)
+        
+        // Show an alert containing the annotation's details
+        let alert = UIAlertController(title: annotation.title!!, message: "A lovely (if touristy) place.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }  */
+    
     
     
     //******** Segmented Control ***********************************//
@@ -246,6 +384,9 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         super.didReceiveMemoryWarning()
     }
  
-    
+
     
 }  //*************** End Class
+
+
+
