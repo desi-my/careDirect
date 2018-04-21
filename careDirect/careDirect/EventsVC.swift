@@ -27,6 +27,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
     var selectedEvent: EventModel?
     
+    var pins =  [PinModel]()
     
     
     func setupMapView() {
@@ -37,19 +38,6 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapView.delegate = self
-
-        
-  /*      UIView.animate(withDuration: 0.7, delay: 1.0, options: .curveEaseOut, animations: {
-            
-            let _:CGRect = self.pinView.frame
-            let newFrame:CGRect = CGRect(x: 0, y:390, width: self.pinView.frame.size.width, height: self.pinView.frame.size.height)
-            self.pinView.frame = newFrame
-            
-        }, completion: { finished in
-            // animation completed - do sometthing
-        })
-     */
-        
     }
     
     // 1 Check Location Service
@@ -82,13 +70,13 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
 
     // Custom Pin Icons
-    
-   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-    {
+    /* func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+  
+        
      if !(annotation is MKPointAnnotation) {
            return nil
         }
-        
+     
         let annotationIdentifier = "pin"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
         
@@ -103,36 +91,64 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             annotationView!.annotation = annotation
         }
         
-        let orgButton = UIButton(type: UIButtonType.custom) as UIButton
+       let orgButton = UIButton(type: UIButtonType.custom) as UIButton
         orgButton.frame.size.width = 44
         orgButton.frame.size.height = 44
-        orgButton.backgroundColor = UIColor.red
+        orgButton.backgroundColor = UIColor.blue
         orgButton.setImage(UIImage(named: "Org"), for: .normal)
         
         annotationView?.leftCalloutAccessoryView = orgButton
         
-       let pinImage = UIImage(named: "pin")
+        let pinImage = UIImage(named: "pin")
         annotationView!.image = pinImage
         return annotationView
-        
-    }
+   }  */
+    
+    //
     
     
 
- func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+/* func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         // Hide the callout view.
     //    mapView.deselectAnnotation(annotation, animated: false)
-        
-        // Show an alert containing the annotation's details
-    let ac = UIAlertController(title: "placeName", message: "This is exapme", preferredStyle: .alert)
-   ac.addAction(UIAlertAction(title: "OK", style: .default))
-    present(ac, animated: true)
+    //    Show an alert containing the annotation's details
     
+let ac = UIAlertController(title: "placeName", message: "This is exapme", preferredStyle: .alert)
+   ac.addAction(UIAlertAction(title: "OK", style: .default))
+   present(ac, animated: true)
+    }  */
+    
+    
+func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+        print("Pin clicked");
+        
+        print (pinView.lblTitle.text!)
+      //  self.pinView.lblDate.text = eventDate as? String
+      //  self.pinView.lblOrganization.text = eventOrganization as? String
+        
+        let pinModel = view.annotation as? PinModel
+        if (pinModel != nil) {
+            self.pinView.lblTitle.text = pinModel?.titlePin;
+            self.pinView.lblDate.text = pinModel?.datePin;
+            self.pinView.lblOrganization.text = pinModel?.organizationPin;
+        }
+        self.pinView.isHidden = false;
+        
+        UIView.animate(withDuration: 0.3, delay: 1.0, options: .curveEaseOut, animations: {
+            let _:CGRect = self.pinView.frame
+            let newFrame:CGRect = CGRect(x: 0, y:390, width: self.pinView.frame.size.width, height: self.pinView.frame.size.height)
+            self.pinView.frame = newFrame
+              self.pinView.alpha = 1
+            
+        }, completion: { finished in
+            // animation completed - do sometthing
+            self.pinView.isHidden = false
+        })
 
     }
     
     
-
     
  /*   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let capital = view.annotation as! EventModel
@@ -147,8 +163,14 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
    // custom image annotation - Ok
 
- /*  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "Name"
+ func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    
+    if annotation is MKUserLocation {
+        //return nil so map view draws "blue dot" for standard user location
+        return nil
+    }
+    
+        let identifier = "pin"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         if (annotationView == nil) {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -156,10 +178,10 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         else {
             annotationView!.annotation = annotation
         }
-        annotationView!.image = UIImage(named: "Name")
+        annotationView!.image = UIImage(named: "pin")
         
         return annotationView
-    }  */
+    }
 
 
     
@@ -259,14 +281,14 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
                     let eventOrganization = eventObject?["Organization"]
                     let eventDescription = eventObject?["Description"]
                     
-            
+                    
                     //Map
                     
                     let address = eventLocation as! String
-                    
+
                     let geocoder:CLGeocoder = CLGeocoder()
                     
-                    geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+                        geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
                         if((error) != nil){
                             print("Error", error ?? "")
                         }
@@ -276,24 +298,23 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
                             let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
                             
                           let pointAnnotation:MKPointAnnotation = MKPointAnnotation()
-                           pointAnnotation.coordinate = coordinates
-                           pointAnnotation.title = eventTitle as? String
+                          pointAnnotation.coordinate = coordinates
+                          pointAnnotation.title = eventTitle as? String
                             
+                            
+                      
+                        let customAnnotation = PinModel(titleP: (eventTitle as? String)!, locationP: eventLocation as! String, dateP: eventDate as! String,  organizationP: eventOrganization as! String, coordinate: coordinates)
+                        self.mapView.addAnnotation(customAnnotation)
+                         //self.mapView.showAnnotations([customAnnotation], animated: true)
+                            
+                       
+                            //self.mapView.addAnnotation(pointAnnotation)
+                            
+                      //     self.mapView.addAnnotation(pointAnnotation)
+                        //    self.mapView.centerCoordinate = coordinates
+                        //   self.mapView.selectAnnotation(pointAnnotation, animated: true)
                             
 
-                           self.mapView.addAnnotation(pointAnnotation)
-                            self.mapView.centerCoordinate = coordinates
-                           self.mapView.selectAnnotation(pointAnnotation, animated: true)
-                            
-                            
-                            
-                       //     let alert = UIAlertController(title: pointAnnotation.title!, message: "A lovely (if touristy) place.", preferredStyle: .alert)
-                      //      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        //    self.present(alert, animated: true, completion: nil)
-                            
-                            
-                           
-                            
                             
                     //         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
                          //    print("annotation pressed")
@@ -306,10 +327,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
                         
                         
                     })   // End map
-                    
-                    self.pinView.lblTitle.text = eventTitle as? String
-                    self.pinView.lblDate.text = eventDate as? String
-                    self.pinView.lblOrganization.text = eventOrganization as? String
+            
                     
                   
 
@@ -323,6 +341,7 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         
     }    //end viewDidLoad
     
+
     
     
 /*    func mapView(_ mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
@@ -371,11 +390,12 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             self.mapView.isHidden = true
             self.tableEventsContainer.isHidden = false
             self.addEventButton.isHidden = false
+              self.pinView.isHidden = true;
         } else {
             self.mapView.isHidden = false
             self.tableEventsContainer.isHidden = true
             self.addEventButton.isHidden = true
-            
+            self.pinView.isHidden = false;
             checkLocationServiceAuthenticationStatus()
         }
     }
@@ -384,9 +404,13 @@ class EventsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         super.didReceiveMemoryWarning()
     }
  
-
     
-}  //*************** End Class
+    }
+    
+//*************** End Class
+
+
+
 
 
 
