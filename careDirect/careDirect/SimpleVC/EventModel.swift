@@ -6,6 +6,8 @@
 //  Copyright © 2018 Daisy Yovcheva. All rights reserved.
 //
 
+import MapKit
+
 class EventModel {
     
     var title: String?

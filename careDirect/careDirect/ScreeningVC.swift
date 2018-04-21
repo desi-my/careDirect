@@ -14,11 +14,12 @@ class ScreeningVC: UIViewController {
     @IBOutlet weak var viewHome: UIView!
     
     @IBAction func getStartedButton(_ sender: UIButton) {
-        if sender.tag == 201 {
-            print("next page")
-            self.view.viewWithTag(200)?.isHidden = true
-            self.view.viewWithTag(202)?.isHidden = false
-        }
+        
+     if sender.tag == 201 {
+          print("next page")
+        self.view.viewWithTag(200)?.isHidden = true
+        self.view.viewWithTag(202)?.isHidden = false
+       }
     }
     
     @IBOutlet weak var viewStep1a: UIView!

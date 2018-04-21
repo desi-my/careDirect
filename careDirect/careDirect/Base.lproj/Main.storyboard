@@ -425,9 +425,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QOk-3g-a8L"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Screening Tool" id="ZJ9-i5-a83">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="daz-19-OTN"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Screening Tool" id="ZJ9-i5-a83"/>
                     <connections>
                         <outlet property="viewHome" destination="msF-gC-Yug" id="66m-UD-20F"/>
                         <outlet property="viewStep1a" destination="D6P-IT-caD" id="fsM-eR-a3t"/>
@@ -1228,7 +1226,7 @@
         <scene sceneID="AXi-tb-V0w">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bOE-Ga-ERY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Screening" image="direct" landscapeImage="direct" selectedImage="diret" id="R4j-1N-gtd">
+                    <tabBarItem key="tabBarItem" title="Screening" image="diret" landscapeImage="diret" selectedImage="diret" id="R4j-1N-gtd">
                         <color key="badgeColor" red="0.19407793879508972" green="0.34005868434906006" blue="0.41934573650360107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1290,7 +1288,6 @@
         <image name="call" width="103" height="80"/>
         <image name="careDIRECT" width="574" height="134"/>
         <image name="conversation" width="235" height="233"/>
-        <image name="direct" width="9" height="10"/>
         <image name="diret" width="18" height="21"/>
         <image name="events" width="19" height="20"/>
         <image name="guide" width="21" height="18"/>

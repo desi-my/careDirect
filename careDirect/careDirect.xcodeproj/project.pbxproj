@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4CF2170B3019D6E3F09456D1 /* Pods_careDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9A40FD6E98B2F46B411A43 /* Pods_careDirect.framework */; };
+		AB1295E02087317A00112233 /* PinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1295DF2087317A00112233 /* PinModel.swift */; };
 		AB2EF66120709EFE00A8BD7A /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EF66020709EFE00A8BD7A /* DetailsModel.swift */; };
 		AB2EF6632070A6B600A8BD7A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EF6622070A6B600A8BD7A /* DetailsViewController.swift */; };
 		AB2EF66620717BF800A8BD7A /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EF66420717BF800A8BD7A /* DetailsTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		7F3573DAC6418FE182944D36 /* Pods-careDirect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-careDirect.release.xcconfig"; path = "Pods/Target Support Files/Pods-careDirect/Pods-careDirect.release.xcconfig"; sourceTree = "<group>"; };
+		AB1295DF2087317A00112233 /* PinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinModel.swift; sourceTree = "<group>"; };
 		AB2EF66020709EFE00A8BD7A /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		AB2EF6622070A6B600A8BD7A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		AB2EF66420717BF800A8BD7A /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				ABD0DED0207C1767005C9432 /* SignInVC.swift */,
 				ABD0DED4207E0F7D005C9432 /* PinView.xib */,
 				ABD0DED6207E15F0005C9432 /* PinView.swift */,
+				AB1295DF2087317A00112233 /* PinModel.swift */,
 				ABE720002054C9AC00C23F58 /* TrainingVC.swift */,
 				ABD0DECE207C171A005C9432 /* EventViewController.swift */,
 				AB405DAA2044AD4800B389B3 /* AddEventVC.swift */,
@@ -322,6 +325,7 @@
 				AB405DAD2047789A00B389B3 /* ViewControllerTableViewCell.swift in Sources */,
 				AB2EF66120709EFE00A8BD7A /* DetailsModel.swift in Sources */,
 				AB2EF66D2078876700A8BD7A /* ListTableViewCell.swift in Sources */,
+				AB1295E02087317A00112233 /* PinModel.swift in Sources */,
 				AB405DA32043802A00B389B3 /* ListVC.swift in Sources */,
 				ABD0DEEA2084A12B005C9432 /* ScreeningVC.swift in Sources */,
 				ABD0DECF207C171A005C9432 /* EventViewController.swift in Sources */,

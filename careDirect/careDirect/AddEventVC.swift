@@ -153,7 +153,8 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                     return
                 }else{
                     //store downloadURL
-                    let downloadURL = metaData!.downloadURL()!.absoluteString
+                     let downloadURL = metaData!.downloadURL()!.absoluteString
+                  //  let downloadURL = metaData!.downloadURLWithCompletion()!.absoluteString
                     //store downloadURL at database
                       self.refEvents.child(key).child("URL").setValue(downloadURL)
                 }

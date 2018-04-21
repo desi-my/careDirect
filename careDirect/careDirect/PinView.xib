@@ -28,7 +28,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4z-MV-BRX">
-                    <rect key="frame" x="15" y="11" width="344" height="41"/>
+                    <rect key="frame" x="15" y="11" width="313" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                     <nil key="textColor"/>
@@ -46,27 +46,36 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orginization" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Z7-Xg-GFO">
-                    <rect key="frame" x="39" y="88" width="317" height="20"/>
+                    <rect key="frame" x="39" y="89" width="317" height="20"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="organization" translatesAutoresizingMaskIntoConstraints="NO" id="WLW-Na-v2H">
-                    <rect key="frame" x="16" y="88" width="20" height="20"/>
+                    <rect key="frame" x="16" y="89" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-ys-xIn">
                     <rect key="frame" x="208" y="121" width="148" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.10911852435179825" green="0.521294451694014" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.24411919713020325" green="0.70547086000442505" blue="0.79004400968551636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="tintColor" red="0.24411919713020325" green="0.70547086000442505" blue="0.79004400968551636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Get Directions">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="getDirection:" destination="iN0-l3-epB" eventType="touchUpInside" id="lno-PT-nIh"/>
                         <action selector="getDirections:" destination="-1" eventType="touchUpInside" id="Npr-9e-Wgv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="99" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1I-o6-Ad8">
+                    <rect key="frame" x="336" y="11" width="23" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button" image="ico-close-modal"/>
+                    <connections>
+                        <action selector="clodePinView:" destination="-1" eventType="touchUpInside" id="oPy-b7-gdB"/>
                     </connections>
                 </button>
             </subviews>
@@ -79,6 +88,7 @@
     <resources>
         <image name="Map Card Background" width="562" height="181"/>
         <image name="ic_time-1" width="24" height="24"/>
+        <image name="ico-close-modal" width="42" height="42"/>
         <image name="organization" width="24" height="24"/>
     </resources>
 </document>
