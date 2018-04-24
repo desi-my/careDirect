@@ -200,7 +200,6 @@ func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  tableCount = eventsList.count
        return eventsList.count
-        //return 1;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
