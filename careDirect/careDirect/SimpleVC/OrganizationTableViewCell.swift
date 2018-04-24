@@ -11,17 +11,20 @@ import UIKit
 class OrganizationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
     
+    class var expandedHeightOrg: CGFloat { get  {return 200} }
+    class var defaultHeightOrg: CGFloat { get  {return 50} }
     
-   // class var expandedHeight: CGFloat { get  {return 200} }
- //   class var defaultHeight: CGFloat { get  {return 50} }
-    
- //   func customInit(orgName: String, orgWebsite: String, orgEmail: String, orgPhone: String){
-      func customInit(orgName: String){
+    func customInit(orgName: String, orgWebsite: String, orgEmail: String, orgPhone: String, orgLocation: String){
         self.lblName.text = orgName
-       // self.lblWebsite.text = resWebsite
-    //    self.lblEmail.text = orgEmail
-     //   self.lblPhonel.text = orgPhone
+        self.lblWebsite.text = orgWebsite
+        self.lblEmail.text = orgEmail
+        self.lblPhone.text = orgPhone
+        self.lblLocation.text = orgLocation
     //    self.lblAbout.text = orgPhone
     }
     override func awakeFromNib() {

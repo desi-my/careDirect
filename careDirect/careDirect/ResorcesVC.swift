@@ -26,6 +26,11 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     private var dpShowWebsiteVisible = false
     private var dpShowEmailVisible = false
     private var dpShowPhoneVisible = false
+    
+    private var orShowWebsiteVisible = false
+    private var orShowEmailVisible = false
+    private var orShowPhoneVisible = false
+    private var orShowLocationVisible = false
   
 // Organization List
     @IBOutlet weak var organizationContainer: UITableView!
@@ -49,7 +54,6 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         resourcesCategories.text = categories[row]
-      //  resourcesCategories.text = categories[2]
         resourcesCategories.resignFirstResponder()
     }
     
@@ -62,20 +66,59 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tableContainer.endUpdates()
     }
     
-    
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    private func toggleOrgContent() {
+        
+        orShowWebsiteVisible = !orShowWebsiteVisible
+        orShowEmailVisible = !orShowEmailVisible
+        orShowPhoneVisible = !orShowPhoneVisible
+        orShowLocationVisible = !orShowLocationVisible
+        
+        organizationContainer.beginUpdates()
+        organizationContainer.endUpdates()
     }
+    
+   //  func numberOfSections(in tableView: UITableView) -> Int {
+       // return 1
+  //  }
     
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resources.count
-      //  return (resources.count + organizations.count)
+     //  return resources.count && organizations.count
+     //   return (resources.count + organizations.count)
+     //   return organizations.count
+        
+        if tableView == tableContainer  {
+            return resources.count
+        }else {
+             return organizations.count
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "refCell", for: indexPath) as! ResourceTableViewCell
+        var cell:UITableViewCell?
+        
+        if tableView == tableContainer {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "refCell", for: indexPath) as! ResourceTableViewCell
+            let resource: ResourcesModel
+            resource = resources[indexPath.row]
+            cell.lblName.text = resource.name
+            cell.lblWebsite.text = resource.website
+            cell.lblEmail.text = resource.email
+            cell.lblPhone.text = resource.phone
+            return cell
+        }else {
+            let orgCell = tableView.dequeueReusableCell(withIdentifier: "orgCell", for: indexPath) as! OrganizationTableViewCell
+            let organization: OrganizationModel
+            organization = organizations[indexPath.row]
+            orgCell.lblName.text = organization.name
+            orgCell.lblLocation.text = organization.location
+            orgCell.lblPhone.text = organization.phone
+            orgCell.lblEmail.text = organization.email
+            orgCell.lblWebsite.text = organization.website
+            return orgCell
+        }
+return cell!
+     /*   let cell = tableView.dequeueReusableCell(withIdentifier: "refCell", for: indexPath) as! ResourceTableViewCell
         let resource: ResourcesModel
         resource = resources[indexPath.row]
         cell.lblName.text = resource.name
@@ -83,7 +126,7 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         cell.lblEmail.text = resource.email
         cell.lblPhone.text = resource.phone
         
-            return cell
+            return cell */
         
         
       /*  let orgCell = tableView.dequeueReusableCell(withIdentifier: "orgCell", for: indexPath) as! OrganizationTableViewCell
@@ -97,24 +140,55 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     
-    //test
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          if tableView == tableContainer {
           let indexPath = tableContainer.indexPathForSelectedRow!
           selectedIndexPath = resources[indexPath.row]
         
          toggleContent()
          tableContainer.deselectRow(at: indexPath, animated: true)
-        
-         }
-
+       } else {
+              let indexPath = organizationContainer.indexPathForSelectedRow!
+             selectedPath = organizations[indexPath.row]
+             toggleOrgContent()
+             organizationContainer.deselectRow(at: indexPath, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       if  indexPath == tableContainer.indexPathForSelectedRow {
+     /*  if  indexPath == tableContainer.indexPathForSelectedRow {
        //        if dpShowWebsiteVisible{           //on click hide and show all cells
             return ResourceTableViewCell.expandedHeight
         } else {
                return ResourceTableViewCell.defaultHeight
+        } */
+        
+        if tableView == tableContainer {
+            if  indexPath == tableContainer.indexPathForSelectedRow {
+                //        if dpShowWebsiteVisible{           //on click hide and show all cells
+                return ResourceTableViewCell.expandedHeight
+            } else {
+                return ResourceTableViewCell.defaultHeight
+            }
+        }else if (tableView == organizationContainer) {
+                if  (indexPath == organizationContainer.indexPathForSelectedRow) {
+                    return OrganizationTableViewCell.expandedHeightOrg
+                } else {
+                    return OrganizationTableViewCell.defaultHeightOrg
+                }
+        } else {
+             return OrganizationTableViewCell.defaultHeightOrg
         }
+            
+        
+        
+    /*    if  indexPath == organizationContainer.indexPathForSelectedRow {
+            //        if dpShowWebsiteVisible{           //on click hide and show all cells
+            return OrganizationTableViewCell.expandedHeightOrg
+        } else {
+            return OrganizationTableViewCell.defaultHeightOrg
+        }  */
+        
     }
     
     
@@ -124,7 +198,7 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         self.updatesVisibleSegment()
         pickerView.delegate = self
         pickerView.dataSource = self
-        resourcesCategories.inputView = pickerView  
+        resourcesCategories.inputView = pickerView
         resourcesCategories.textAlignment = .center
         resourcesCategories.placeholder = "Select Category"
         
@@ -158,11 +232,12 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 for organizations in snapshot.children.allObjects as![DataSnapshot] {
                     let organizationObject = organizations.value as? [String: AnyObject]
                     let organizationName = organizationObject?["Name"]
-                  //  let organizationWebsite = organizationObject?["Website"]
+                    let organizationLocation = organizationObject?["Location"]
+                    let organizationWebsite = organizationObject?["Website"]
+                    let organizationEmail = organizationObject?["Email"]
+                    let organizationPhone = organizationObject?["Phone"]
 
-
-                    
-                    let organization = OrganizationModel(Name: organizationName as! String?)
+                    let organization = OrganizationModel(Name: organizationName as! String?, Website: organizationWebsite as! String?, Email: organizationEmail as! String?, Phone: organizationPhone as! String?, Location: organizationLocation as! String? )
                     self.organizations.append(organization)
                 }
                 self.organizationContainer.reloadData()
@@ -183,9 +258,11 @@ class ResorcesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if segmentedControl.selectedSegmentIndex == 0 {
             self.organizationContainer.isHidden = true
             self.tableContainer.isHidden = false
+             self.resourcesCategories.isHidden = false
         } else {
             self.organizationContainer.isHidden = false
             self.tableContainer.isHidden = true
+            self.resourcesCategories.isHidden = true
         }
     }
 

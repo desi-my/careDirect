@@ -19,21 +19,19 @@ import MapKit
 class OrganizationModel {
     
     var name: String?
-   // var website: String?
-  //  var email: String?
-  //  var phone: String?
- //   var location: String?
+    var website: String?
+    var email: String?
+    var phone: String?
+    var location: String?
   //  var about: String?
     
-  //  init(Name: String?, Website: String?, Email: String?, Phone: String?, Location: String?, About: String?) {
-     init(Name: String?) {
+   init(Name: String?, Website: String?, Email: String?, Phone: String?, Location: String?) {
         //  init(Title: String?, Location: String?, Date: String?, URL: String?) {
-        
         self.name = Name;
-    //    self.website = Website;
-     //   self.email = Email;
-      //  self.phone = Phone;
-      //  self.location = Location;
+        self.website = Website;
+       self.email = Email;
+        self.phone = Phone;
+        self.location = Location;
      //   self.about = About;
         
         
