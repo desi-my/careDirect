@@ -18,6 +18,19 @@ class PinView: UIView {
     @IBOutlet weak var lblOrganization: UILabel!
     
     @IBAction func getDirections(_ sender: UIButton) {
+        
+     /*   func mapView(MapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped Control: UIControl) {
+            
+            if Control == annotationView.leftCalloutAccessoryView {
+                if let annotation = annotationView.annotation {
+                    // Unwrap the double-optional annotation.title property or
+                    // name the destination "Unknown" if the annotation has no title
+                    let destinationName = (annotation.title ?? nil) ?? "Unknown"
+                    openMapsAppWithDirections(to: annotation.coordinate, destinationName: destinationName)
+                }
+            }
+            
+        }*/
     
     }
     

@@ -69,9 +69,38 @@ class TrainingVC: UIViewController, MFMailComposeViewControllerDelegate, UITable
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // let indexPath = tableContainer.indexPathForSelectedRow!
-       // selectedIndexPath = trainers[indexPath.row]
+      //  let indexPath = tableContainer.indexPathForSelectedRow!
+      //  selectedIndexPath = trainers[indexPath.row]
+        
+      //  let siteString = trainers
+        
+      //  let siteURL = URL(string: indexPath)
+     //   UIApplication.shared.open(siteURL!)
+        
+      //  let thisRes = arrayOfResourceArrays[indexPath.section][indexPath.row]
+      //  let siteString = thisRes.website
+      ///  let siteURL = URL(string: siteString!)
+      //  UIApplication.shared.open(siteURL!)
+        
     }
+    
+    
+    
+    //////test
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    //    let detailVC = segue.destination as? ResourceDetailVC
+     //   let sectionIndex = selectedResource?.section
+     //   let rowIndex = selectedResource?.row
+      //  detailVC?.resource = arrayOfResourceArrays[sectionIndex!][rowIndex!]
+    }
+    
+    
+    /////end test
+    
+    
     
     
     override func viewDidLoad() {
