@@ -21,7 +21,7 @@ class QuestionVC: UIViewController {
     @IBOutlet weak var radioNo: DLRadioButton!
     @IBOutlet weak var radioNotSure: DLRadioButton!
     
-   
+    
     
     // FIREBASE
     var refQuestions: DatabaseReference!
@@ -38,60 +38,66 @@ class QuestionVC: UIViewController {
     var attachedResourceCategories = [String]()
     
     
-
+    
     
     @IBAction func nextQuestionButton(_ sender: UIButton) {
         
-      
+        
         let selectedButton = radioYes.selected()
-       let title = selectedButton?.titleLabel?.text
-      //  print(title!)
+        let title = selectedButton?.titleLabel?.text
+        //  print(title!)
         
         if (title == nil)  {
             print("alertttttttt")
-              displayMyAlertMessage(userMessage: "Please Select one of the options!");
-             self.view.endEditing(true)
-        }else {
-              print(title!)
-        }
-        
-        var selectedAnswer : Bool?
-        
-        if title == "No" {
-            selectedAnswer = false
-        } else if title == "Yes" {
-            selectedAnswer = true
+            displayMyAlertMessage(userMessage: "Please Select one of the options!");
+            self.view.endEditing(true)
         } else {
-            selectedAnswer = nil
-        }
-        
-        if selectedAnswer != nil {
             
-            // should we attach a resource?
-            if currentQuestion.answerCorrespondingToResource == selectedAnswer {
-                
-                if (currentQuestionGroup.attachResource == false) {
-                    currentQuestionGroup.attachResource = true
-                    print("attaching resource to current question group!")
-                    attachedResourceCategories.append(currentQuestionGroup.title)
-                }
-                
-              
+            print(title!)
+            
+            var selectedAnswer : Bool?
+            
+            
+            if title == "No" {
+                selectedAnswer = false
+            } else if title == "Yes" {
+                selectedAnswer = true
+            } else {
+                selectedAnswer = nil
             }
             
-            // should we go to the next question or next question group
-            if currentQuestion.alwaysGoToNextQuestion == true {
-                loadNextQuestion()
-            } else {
-                if currentQuestion.answerWhichGoesToNext == selectedAnswer {
+            
+            
+            
+            if selectedAnswer != nil {
+                
+                // should we attach a resource?
+                if currentQuestion.answerCorrespondingToResource == selectedAnswer {
+                    
+                    if (currentQuestionGroup.attachResource == false) {
+                        currentQuestionGroup.attachResource = true
+                        print("attaching resource to current question group!")
+                        attachedResourceCategories.append(currentQuestionGroup.title)
+                    }
+                    
+                    
+                }
+                
+                // should we go to the next question or next question group
+                if currentQuestion.alwaysGoToNextQuestion == true {
                     loadNextQuestion()
                 } else {
-                    loadNextQuestionGroup()
+                    if currentQuestion.answerWhichGoesToNext == selectedAnswer {
+                        loadNextQuestion()
+                    } else {
+                        loadNextQuestionGroup()
+                    }
                 }
+            } else {
+                loadNextQuestion()
             }
-        } else {
-            loadNextQuestion()
         }
+        
     }
     
     func setupQuestionView() {
@@ -133,7 +139,7 @@ class QuestionVC: UIViewController {
                     } else if answerCorrespondingToResource == "n/a" {
                         thisQuestion.answerCorrespondingToResource = nil
                     }
-
+                    
                     // PARSE ANSWER WHICH GOES TO NEXT QUESTION
                     let answerWhichGoesToNext = questionDictionary["answerWhichGoesToNext"] as! String
                     if answerWhichGoesToNext == "Yes" {
@@ -162,30 +168,30 @@ class QuestionVC: UIViewController {
     
     // HELPER METHODS
     
-   func attachToResourceBoolFromRadioTitle(title:String) -> Bool! {
+    func attachToResourceBoolFromRadioTitle(title:String) -> Bool! {
         
         var returnBool : Bool!
         
-            if title == "no" {
-                // do nothing
-            } else if title == "I'm not sure" {
-                returnBool = nil
-            } else if title == "Yes" {
-                returnBool = true
-            }
+        if title == "no" {
+            // do nothing
+        } else if title == "I'm not sure" {
+            returnBool = nil
+        } else if title == "Yes" {
+            returnBool = true
+        }
         
-            print("returning")
-            print(returnBool)
+        print("returning")
+        print(returnBool)
         
-            return returnBool
+        return returnBool
         
     }
     
     func loadNextQuestionGroup() {
         
-//        self.radioYes.isSelected = false
-//        self.radioNotSure.isSelected = false
-//        self.radioNo.isSelected = false
+        self.radioYes.isSelected = false
+        self.radioNotSure.isSelected = false
+        self.radioNo.isSelected = false
         
         questionGroupIndex += 1
         questionIndex = 0
@@ -198,15 +204,13 @@ class QuestionVC: UIViewController {
             performSegue(withIdentifier: "screenerResultsSegue", sender: self)
         }
         
-        
-        
     }
     
     func loadNextQuestion() {
         
-//           self.radioYes.isSelected = false
-//          self.radioNotSure.isSelected = false
-//        self.radioNo.isSelected = false
+        self.radioYes.isSelected = false
+        self.radioNotSure.isSelected = false
+        self.radioNo.isSelected = false
         
         questionIndex += 1
         
@@ -219,7 +223,7 @@ class QuestionVC: UIViewController {
         }
         
         displayCurrentQuestion()
-       
+        
         
     }
     
@@ -227,7 +231,7 @@ class QuestionVC: UIViewController {
         
         categoryLabel.text = currentQuestionGroup.title
         questionlabel.text = currentQuestion.question
-        stepLabel.text = String(format:"Step %i out of %6", questionGroupIndex + 1, questionGroups.count)
+        stepLabel.text = String(format:"Step %i of %6", questionGroupIndex + 1, questionGroups.count)
         
     }
     
@@ -235,11 +239,11 @@ class QuestionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
+        
         
         loadQuestionsFromFB()
         
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -247,7 +251,7 @@ class QuestionVC: UIViewController {
         // HERE YOU PASS THE attachedResourceCategories ARRAY
         // TO THE RECEIVING VIEW CONTROLLER FOR USE IN A
         // TABLE VIEW WITH SECTIONS
-
+        
         if segue.identifier == "screenerResultsSegue" {
             
             var resultsVC : ScreenerResultsVC
@@ -267,5 +271,5 @@ class QuestionVC: UIViewController {
         myAlert.addAction(okAction);
         self.present(myAlert, animated:true, completion:nil);
     }
-
+    
 }
