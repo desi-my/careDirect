@@ -69,8 +69,68 @@ class TrainingVC: UIViewController, MFMailComposeViewControllerDelegate, UITable
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      //  let indexPath = tableContainer.indexPathForSelectedRow!
+        
+        
+        let resourceCell = tableView.cellForRow(at: indexPath) as! TrainerTableViewCell
+        let siteString = resourceCell.lblPhone.text
+        var strippedNumber = ""
+        
+        let charset = CharacterSet.decimalDigits
+        
+        for char in siteString! {
+            let charString = String(char)
+            if charString.rangeOfCharacter(from: charset) != nil {
+                strippedNumber.append(char)
+            }
+        }
+        
+        
+        let url:NSURL = URL(string: "TEL://" + (strippedNumber))! as NSURL
+           UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        
+
+         /*   let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            // Configure the fields of the interface.
+            composeVC.setToRecipients([siteString!])
+            composeVC.setSubject("Hello!")
+            composeVC.setMessageBody("Hello this is my message body!", isHTML: false)
+            // Present the view controller modally.
+            self.present(composeVC, animated: true, completion: nil) */
+        
+        
+        
+  
+        
+      //  let url:NSURL = URL(string: "TEL://" + (siteString)!)! as NSURL
+        //   UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+      
+        
+   ////     UIApplication.sharedApplication().openURL(NSURL(string: "tel://9809088798")!)
+      //  let siteURL = URL(string: siteString!)
+      //  UIApplication.shared.open(siteURL!)
+        
+       // let thisRes = trainers[indexPath.row]
+      //  let siteString = thisRes.phone
+      ///  let siteURL: NSURL = (URL(string: siteString!)! as NSURL?)!
+      //  UIApplication.shared.open(siteURL as URL, options: [:], completionHandler: nil)
+        
+        //  let url: NSURL = URL(string: "TEL://2063832319")! as NSURL
+        //   UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        
+        
+     //   let indexPath = tableContainer.indexPathForSelectedRow
       //  selectedIndexPath = trainers[indexPath.row]
+        
+        
+        
+        //getting the current cell from the index path
+     //   let currentCell = tableContainer.cellForRow(at: indexPath!)! as! TrainerTableViewCell
+        
+        //getting the text of that cell
+     //   let currentItem = currentCell.lblPhone
+       
+        
         
       //  let siteString = trainers
         
@@ -90,6 +150,13 @@ class TrainingVC: UIViewController, MFMailComposeViewControllerDelegate, UITable
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+      
+        
+
+        
+      //  let url: NSURL = URL(string: "TEL://2063832319")! as NSURL
+     //   UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         
     //    let detailVC = segue.destination as? ResourceDetailVC
      //   let sectionIndex = selectedResource?.section
