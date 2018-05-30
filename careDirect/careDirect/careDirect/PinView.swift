@@ -17,7 +17,7 @@ class PinView: UIView {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblOrganization: UILabel!
     
-    @IBAction func getDirections(_ sender: UIButton) {
+ //   @IBAction func getDirections(_ sender: UIButton) {
         
      /*   func mapView(MapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped Control: UIControl) {
             
@@ -32,7 +32,7 @@ class PinView: UIView {
             
         }*/
     
-    }
+ //   }
     
 
 

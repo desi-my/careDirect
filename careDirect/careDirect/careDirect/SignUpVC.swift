@@ -116,8 +116,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == passwordTF {
-            UIView.animate(withDuration: 0.25) {
-                let origin = CGPoint(x: 0, y: -250)
+            UIView.animate(withDuration: 0.35) {
+                let origin = CGPoint(x: 0, y: -200)
                 self.view.frame = CGRect(origin: origin, size: self.view.frame.size)
             }
         }
@@ -125,7 +125,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == passwordTF {
-            UIView.animate(withDuration: 0.25) {
+            UIView.animate(withDuration: 0.05) {
                 let origin = CGPoint(x: 0, y: 0)
                 self.view.frame = CGRect(origin: origin, size: self.view.frame.size)
             }
